@@ -11,8 +11,8 @@ export type FormikCityAutoCompletePrp = Omit<
   value?: any;
 };
 
-const FormikCityAutoComplete = (prop: FormikCityAutoCompletePrp) => {
-  const { value, name, ...rest } = prop;
+const FormikCityAutoComplete = (prp: FormikCityAutoCompletePrp) => {
+  const { value, name, ...rest } = prp;
 
   const [field, , meta] = useField({ name: name, value: value });
 
@@ -21,21 +21,20 @@ const FormikCityAutoComplete = (prop: FormikCityAutoCompletePrp) => {
       return res?.data?.map((node) => ({
         label: node?.cityName || "",
         value: node?.cityName || "",
-        node: node,
       }));
     });
   };
   return (
-    <FetchData request={fetch} deps={[]}>
+    <FetchData request={fetch} deps={[]} handleEmptyData={false}>
       {(opts) => {
         return (
           <SelectWithSearch
             {...rest}
+            value={field?.value}
             displayValue={(val) => val?.label}
             onChange={(payload) => {
-              console.log("payload", payload);
               meta?.setValue({
-                label: payload?.label || undefined,
+                label: payload?.node?.title || undefined,
                 value: payload?.node?.id || undefined,
               });
             }}

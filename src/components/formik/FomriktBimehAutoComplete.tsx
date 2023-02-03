@@ -31,6 +31,7 @@ const FomrikBimehAutoComplete = (prp: FormikSelectBimehPrp) => {
         return (
           <SelectWithSearch
             {...rest}
+            value={field?.value}
             displayValue={(val) => val?.label}
             onChange={(payload) => {
               console.log("payload", payload);

@@ -1,10 +1,10 @@
 import { Combobox, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../store";
-import { setDoctorType } from "../../../store/search";
+import { RootState } from "../../store";
+import { setDoctorType } from "../../store/search";
 import { CheckIcon, SearchIcon } from "@heroicons/react/outline";
-import BaseApi from "../../../api/Api";
+import BaseApi from "../../api/Api";
 import axios from "axios";
 
 const mockData: { label: string; key: number }[] = [
@@ -26,10 +26,6 @@ const DoctorTypAutocomplete = () => {
     BaseApi.getAllCategories
       .getAllCategoriesList()
       .then((res: any) => console.log("rea", res));
-    // axios
-    //   .get("http://api.testappointment.ir/get-all-categories")
-    //   .then((res) => console.log("adfadf", res))
-    //   .catch((er) => console.log("asdf", er));
   };
   useEffect(() => {
     fetch();

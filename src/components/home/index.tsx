@@ -1,4 +1,4 @@
-import Header from "./header";
+import Header from "../../pages/header";
 
 const Home = () => {
   return <Header />;
